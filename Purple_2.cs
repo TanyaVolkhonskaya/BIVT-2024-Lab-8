@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_8
 {
-    internal class Purple_2 :Purple
+    public class Purple_2 :Purple
     {
         private string[] _output;
         public string[] Output
