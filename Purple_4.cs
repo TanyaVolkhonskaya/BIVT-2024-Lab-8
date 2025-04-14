@@ -8,14 +8,17 @@ namespace Lab_8
 {
     public class Purple_4 : Purple
     {
-        public (string, char)[] _code;
+        private (string, char)[] _code;
         private string _output;
         public string Output => _output;
         public Purple_4(string input, (string, char)[] code) : base(input)
         {
-            _code = code;
+            if (code == null) { return; }
+            for (int i = 0; i < code.Length; i++)
+            {
+                _code[i] = code[i];
+            }
         }
-        
         public override void Review()
         {
             if (Input == null) return;

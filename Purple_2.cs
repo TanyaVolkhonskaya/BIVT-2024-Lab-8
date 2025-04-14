@@ -27,7 +27,7 @@ namespace Lab_8
             var array_answers = Input.Split(' ');
             string finals_word = null;
             int limit = 0;
-            var answers = new StringBuilder();
+            var answers = new string[0];
             string[] str = new string[0];
             int count = 0;
             for (int a = 0; a < array_answers.Length-1;)
@@ -54,54 +54,46 @@ namespace Lab_8
                             finals_word = array_answers[a];
                         }
                     }
-                    if (finals_result + array_answers[a].Length + 1 > 50 || a == array_answers.Length - 1)
+                if (finals_result + array_answers[a].Length + 1 > 50 || a == array_answers.Length - 1)
+                {
                     {
+                        if (str.Length != 1)
                         {
-                            if (str.Length != 1)
+                            int coef = ((50 - limit) / (str.Length - 1));
+                            int coef_count = ((50 - limit) % (str.Length - 1));
+                            if (coef_count != 0)
                             {
-                                int coef = ((50 - limit) / (str.Length - 1));
-                                int coef_count = ((50 - limit) % (str.Length - 1));
-                                if (coef_count != 0)
+                                for (int i = 0; i < coef_count; i++)
                                 {
-                                    for (int i = 0; i < coef_count; i++)
-                                    {
-                                        answers.Append(str[i]);
-                                        string s = new String(' ', coef + 1);
-                                        answers.Append(s);
-                                    }
+                                    answers.Append(str[i]).ToArray();
+                                    string s = new String(' ', coef + 1);
+                                    answers.Append(s).ToArray();
                                 }
-                                for (int p = coef_count; p < str.Length - 1; p++)
-                                {
-                                    answers.Append(str[p]);
-                                    string s = new String(' ', coef);
-                                    answers.Append(s);
-                                }
-                                answers.Append(str[str.Length - 1]);
                             }
-                            else { answers.Append(str[0]); }
-
-                            count = 0;
-                            limit = 0;
-                            str = new string[0];
-                            Array.Resize(ref _output, _output.Length + 1);
-                            _output[_output.Length - 1] = answers.ToString();
-                            answers = new StringBuilder();
-
-
+                            for (int p = coef_count; p < str.Length - 1; p++)
+                            {
+                                answers.Append(str[p]);
+                                string s = new String(' ', coef);
+                                answers.Append(s);
+                            }
+                            answers.Append(str[str.Length - 1]);
                         }
+                        else { answers.Append(str[0]); }
 
+                        count = 0;
+                        limit = 0;
+                        str = new string[0];
+                        Array.Resize(ref _output, _output.Length + 1);
+                        _output[_output.Length - 1] = answers.ToString();
+                        answers = new string[0];
                     }
-
-
-
+                }
                     if (finals_word != null)
                     {
                         Array.Resize(ref _output, _output.Length + 1);
                         _output[_output.Length - 1] = array_answers[array_answers.Length - 1].ToString();
 
                     }
-                
-                
             }
         }
 

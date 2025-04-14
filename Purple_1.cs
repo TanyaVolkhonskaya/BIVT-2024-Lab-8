@@ -24,7 +24,7 @@ namespace Lab_8
                 {
                     if (Char.IsDigit(answer[i])) { count++; }
                 }
-                if (count != 0) { answers.Append(answer).ToString(); }
+                if (count != 0) { answers.Append(answer); }
                 else
                 {
                     char[] place = new char[answer.Length];
@@ -51,7 +51,7 @@ namespace Lab_8
                         {
                             temp[answer.Length - i - 1] = answer[i];
                         }
-                        answers.Append(temp).ToString();
+                        answers.Append(temp);
                     }
                     else
                     {
@@ -75,11 +75,11 @@ namespace Lab_8
                         {
                             if (place[i] != ' ')
                             {
-                                answers.Append(place[i]).ToString();
+                                answers.Append(place[i]);
                             }
                             else
                             {
-                                answers.Append(temp[j]).ToString();
+                                answers.Append(temp[j]);
                                 j++;
                             }
 
@@ -89,13 +89,11 @@ namespace Lab_8
                 }
                     answers.Append(' ');
                     _output = answers.ToString();
-                
             }
         }
         public override string ToString()
         {
             return _output;
         }
-
     }
 }
