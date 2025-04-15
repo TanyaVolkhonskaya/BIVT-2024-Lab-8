@@ -13,15 +13,11 @@ namespace Lab_8
         public string Output => _output;
         public Purple_4(string input, (string, char)[] code) : base(input)
         {
-            if (code == null) { return; }
-            for (int i = 0; i < code.Length; i++)
-            {
-                _code[i] = code[i];
-            }
+            _code = code;
         }
         public override void Review()
         {
-            if (Input == null) return;
+            if (Input == null || _code==null) return;
             var answer = new StringBuilder();
             for (int i = 0; i < Input.Length; i++)
             {
